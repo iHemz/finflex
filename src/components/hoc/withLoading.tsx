@@ -3,13 +3,13 @@ import { Skeleton } from "@/components/ui/Skeleton";
 
 interface WithLoadingProps {
   loading: boolean;
-  variant?: "card" | "text" | "circle";
+  variant?: "small_card" | "card" | "text" | "circle";
   className?: string;
 }
 
 export function withLoading<P extends object>(
   WrappedComponent: ComponentType<P>,
-  defaultVariant: "card" | "text" | "circle" = "text"
+  defaultVariant: WithLoadingProps["variant"] = "text"
 ) {
   return function WithLoadingComponent({
     loading,

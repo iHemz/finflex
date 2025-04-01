@@ -55,8 +55,8 @@ export type Categories = Array<Category>;
 export type Months = Month[];
 export type BudgetData = Array<BudgetInfo>;
 
-type Budget = { monthly: BudgetData; totalBudget: number };
-type SpendingMax = { total: number; categories: Categories };
+export type Budget = { monthly: BudgetData; totalBudget: number };
+export type SpendingMax = { total: number; categories: Categories };
 type Goal = { current: number; target: number; percentage: number };
 
 interface PerformanceData {

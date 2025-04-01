@@ -1,11 +1,10 @@
-import { withLoading } from "@/components/hoc/withLoading";
 import { Finance } from "@/requests/financial_data/types";
 
 interface FinanceCardProps extends Partial<Finance> {
   title: string;
 }
 
-function FinanceCardComponent({ amount = 0, change = 0, title }: FinanceCardProps) {
+export function FinanceCard({ amount = 0, change = 0, title }: FinanceCardProps) {
   return (
     <section className="card">
       <div className="p-4">
@@ -47,4 +46,4 @@ function FinanceCardComponent({ amount = 0, change = 0, title }: FinanceCardProp
   );
 }
 
-export const FinanceCard = withLoading(FinanceCardComponent, "card");
+// export const FinanceCard = withLoading(FinanceCardComponent, "small_card");
