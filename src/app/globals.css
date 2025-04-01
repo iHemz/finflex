@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #0e0e13;
+  --card-bg: #1a1a24;
+  --accent-yellow: #e6ff4d;
+  --accent-blue: #4de1ff;
+  --accent-green: #47e3c6;
+  --text-primary: #fff;
+  --text-secondary: #ababab;
+  --gradient-start: #e6ff4d;
+  --gradient-end: #4de1ff;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --card: var(--card-bg);
+  --card-radius: 16px;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --credit-card-gradient: linear-gradient(
+    40deg,
+    var(--accent-blue) 0%,
+    var(--accent-green) 20%,
+    black 60%
+  );
+  --gradient-card: linear-gradient(110deg, var(--gradient-start) 0%, var(--accent-green) 100%);
+  --accent-btn-bg: var(--accent-yellow);
+  --accent-btn-radius: 50%;
+  --header-link-color: var(--text-secondary);
+  --header-link-active-color: var(--text-primary);
+  --header-link-transition: color 0.2s;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--inter), sans-serif;
+  min-height: 100vh;
+}
+
+.bg-gradient-card {
+  background: linear-gradient(110deg, var(--gradient-start) 0%, var(--accent-green) 100%);
+  color: #000;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.credit-card {
+  background: linear-gradient(40deg, var(--accent-blue) 0%, var(--accent-green) 20%, black 60%);
+  border-radius: 16px;
+  color: white;
+}
+
+.accent-text {
+  color: var(--accent-yellow);
+}
+
+.header-link {
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.header-link.active,
+.header-link:hover {
+  color: var(--text-primary);
+}
+
+.accent-btn {
+  background-color: var(--accent-yellow);
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
