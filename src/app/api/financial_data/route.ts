@@ -5,6 +5,7 @@ import {
   Categories,
   FinancialData,
   Months,
+  Performance,
   Transactions,
 } from "@/requests/financial_data/types";
 
@@ -33,23 +34,29 @@ export async function GET() {
 
   // Create spending categories
   const categories: Categories = [
-    { name: "Auto & Transport", percentage: 40, color: "#00B2FF" },
-    { name: "Food", percentage: 25, color: "#FFFF00" },
-    { name: "Clothes", percentage: 20, color: "#00FFDF" },
-    { name: "Other", percentage: 15, color: "#FFFFFF" },
+    { name: "Auto & Transport", value: 400, percentage: 40, color: "#00B2FF" },
+    { name: "Food", value: 250, percentage: 25, color: "#FFFF00" },
+    { name: "Clothes", value: 200, percentage: 20, color: "#00FFDF" },
+    { name: "Other", value: 150, percentage: 15, color: "#FFFFFF" },
   ];
 
   // Create monthly budget data
   const months: Months = ["Jun", "Jul", "Aug", "Sep", "Oct"];
+  const performance_months: Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const budgetData: BudgetData = months.map((month) => {
     return {
-      month,
+      name: month,
       income: parseInt(faker.finance.amount({ min: 3000, max: 5000, dec: 0 })),
       spent: parseInt(faker.finance.amount({ min: 1500, max: 3000, dec: 0 })),
       scheduled: parseInt(faker.finance.amount({ min: 500, max: 1500, dec: 0 })),
       savings: parseInt(faker.finance.amount({ min: 200, max: 1000, dec: 0 })),
     };
   });
+
+  const performance: Performance = performance_months.map((month) => ({
+    name: month,
+    value: parseInt(faker.finance.amount({ min: 3000, max: 6000, dec: 0 })),
+  }));
 
   // Generate the main financial data
   const financialData: FinancialData = {
@@ -80,6 +87,7 @@ export async function GET() {
       categories,
     },
     transactions,
+    performance,
     goal: {
       current: 1500,
       target: 3000,

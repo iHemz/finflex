@@ -1,8 +1,8 @@
 "use client";
 
-import { BellIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { BellIcon } from "@heroicons/react/24/outline";
+import useRouterWithLoader from "@/hooks/useRouterWithLoader";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -14,28 +14,28 @@ const navigation = [
 ];
 
 export default function Header() {
-  const pathname = usePathname();
+  const router = useRouterWithLoader();
 
   return (
-    <div className="sticky top-0 z-10 flex h-20 items-center justify-between px-6">
-      <div className="flex items-center">
-        <div className="flex items-center mr-10">
-          <div className="h-10 w-10 rounded-md bg-accent-yellow flex items-center justify-center text-black font-bold">
-            FF
-          </div>
-          <span className="ml-2 text-xl font-bold">FinFlex</span>
+    <header className="sticky top-0 z-10 flex h-20 items-center justify-between px-6">
+      <Link href="/" id="logo" className=" cursor-pointer flex items-center">
+        <div className="h-10 w-10 rounded-md bg-accent-yellow flex items-center justify-center  font-bold">
+          FF
         </div>
-        <nav className="flex space-x-2">
+        <span className="ml-2 text-xl font-bold">Fobework</span>
+      </Link>
+      <section id="navlinks">
+        <nav className="flex space-x-2 p-2 bg-card-bg rounded-full">
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = router.pathName === item.href;
             return (
               <Link
                 key={item.name}
                 href={item.href}
                 className={`flex items-center px-4 py-2 rounded-full ${
                   isActive
-                    ? "bg-accent-yellow text-black font-medium"
-                    : "header-link hover:text-white"
+                    ? "bg-gradient-start text-black font-medium"
+                    : "header-link hover:bg-gradient-start/10 hover:text-white"
                 }`}
               >
                 {item.name === "Home" && isActive && (
@@ -53,8 +53,9 @@ export default function Header() {
             );
           })}
         </nav>
-      </div>
-      <div className="flex items-center space-x-4">
+      </section>
+
+      <section className="flex items-center space-x-4">
         <button
           type="button"
           className="rounded-full bg-card-bg p-2 text-gray-400 hover:text-gray-300"
@@ -69,7 +70,7 @@ export default function Header() {
             className="h-full w-full object-cover"
           />
         </div>
-      </div>
-    </div>
+      </section>
+    </header>
   );
 }

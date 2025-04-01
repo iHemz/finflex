@@ -23,3 +23,10 @@ export const fromBase64 = (str: string | null | undefined): string => {
 
   return "";
 };
+
+export const scrollToTopAction = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};

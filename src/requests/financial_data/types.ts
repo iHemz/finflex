@@ -10,6 +10,7 @@ interface Transaction {
 
 interface Category {
   name: string;
+  value: number;
   percentage: number;
   color: string;
 }
@@ -29,22 +30,22 @@ type Month =
   | "Dec";
 
 interface BudgetInfo {
-  month: Month;
+  name: Month;
   income: number;
   spent: number;
   scheduled: number;
   savings: number;
 }
 
-interface Finance {
+export interface Finance {
   amount: number;
   change: number;
 }
 
-interface TotalBal extends Finance {
+export interface TotalBal extends Finance {
   changeAmount: number;
 }
-interface Credit extends Pick<Finance, "amount"> {
+export interface Credit extends Pick<Finance, "amount"> {
   cardNumber: string;
   expiryDate: string;
 }
@@ -58,9 +59,16 @@ type Budget = { monthly: BudgetData; totalBudget: number };
 type SpendingMax = { total: number; categories: Categories };
 type Goal = { current: number; target: number; percentage: number };
 
+interface PerformanceData {
+  name: Month;
+  value: number;
+}
 interface Savings extends Pick<Finance, "amount"> {
   rate: number;
 }
+
+export type Performance = Array<PerformanceData>;
+
 export type FinancialData = {
   totalBalance: TotalBal;
   income: Finance;
@@ -69,6 +77,7 @@ export type FinancialData = {
   budget: Budget;
   topSpending: SpendingMax;
   transactions: Transactions;
+  performance: Performance;
   goal: Goal;
   savings: Savings;
 };
