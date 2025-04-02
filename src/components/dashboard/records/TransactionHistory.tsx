@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { useState } from "react";
 import { withLoading } from "@/components/hoc/withLoading";
 import { IntraLink } from "@/components/ui/IntraLink";
@@ -44,7 +45,7 @@ function TransactionHistoryComponent({ transactions = [] }: { transactions?: Tra
                   </div>
                   <div>
                     <div className="text-sm font-medium text-gray-200">{transaction.merchant}</div>
-                    <div className="text-xs text-gray-400">{`${transaction.date} ${transaction.time}`}</div>
+                    <div className="text-xs text-gray-400">{`${dayjs(transaction.date).format("DD-MM-YY")} ${transaction.time}`}</div>
                   </div>
                 </div>
                 <div
