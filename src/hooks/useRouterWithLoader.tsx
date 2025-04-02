@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import NProgress from "nprogress";
-import { scrollToTopAction } from "@/utils/common";
+import { scrollToTopAction } from "@/libs/utils";
 
 export type RouterProps = AppRouterInstance & {
   pathName: string;

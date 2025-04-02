@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 
 interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "small_card" | "card" | "text" | "circle";

@@ -3,7 +3,7 @@ import { Transactions } from "@/requests/financial_data/types";
 
 function TransactionHistoryComponent({ transactions = [] }: { transactions?: Transactions }) {
   return (
-    <section className="md:col-span-4 card">
+    <section className="md:col-span-12 lg:col-span-4 card">
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-medium text-gray-300">Transaction history</h3>

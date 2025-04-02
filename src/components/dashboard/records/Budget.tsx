@@ -4,7 +4,7 @@ import { Budget as BudgetProps } from "@/requests/financial_data/types";
 
 function BudgetComponent({ monthly: monthlyBudget = [] }: Partial<BudgetProps>) {
   return (
-    <section className="md:col-span-5 card">
+    <section className="md:col-span-8 lg:col-span-5 card">
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-medium text-gray-300">Budget</h3>

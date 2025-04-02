@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { fromBase64 } from "@/utils/common";
+import { fromBase64 } from "@/libs/utils";
 
 async function handler(req: NextRequest) {
   return handleRequest(req);

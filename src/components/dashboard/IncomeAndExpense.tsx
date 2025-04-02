@@ -9,7 +9,7 @@ type Props<T> = {
 
 function IncomeAndExpenseComponent({ income, expense }: Props<Finance>) {
   return (
-    <section className="md:col-span-3 flex flex-col gap-6">
+    <section className="md:col-span-4 lg:col-span-3 flex flex-col gap-6">
       {/* Income */}
       <FinanceCard title="Income" {...income} />
       {/* Expense */}

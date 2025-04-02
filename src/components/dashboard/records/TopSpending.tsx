@@ -4,7 +4,7 @@ import { SpendingMax } from "@/requests/financial_data/types";
 
 function TopSpendingComponent({ categories = [] }: Partial<SpendingMax>) {
   return (
-    <section className="md:col-span-3 card">
+    <section className="md:col-span-4 lg:col-span-3 card">
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-medium text-gray-300">Top spending</h3>

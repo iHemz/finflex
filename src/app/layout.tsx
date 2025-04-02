@@ -10,8 +10,16 @@ import Layout from "@/components/layout/Layout";
 const inter = Inter({ variable: "--inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fobework",
-  description: "Modern FinTech Savings & Investment Dashboard",
+  title: "FinFlex",
+  description: "A modern financial dashboard for managing your finances",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

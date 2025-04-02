@@ -16,7 +16,7 @@ function BalanceCardComponent({
   const formattedChangeAmount = new Intl.NumberFormat("en-US").format(changeAmount);
 
   return (
-    <section className="md:col-span-5 h-60 md:h-auto card bg-gradient-card relative">
+    <section className="md:col-span-8 lg:col-span-5 h-60 md:h-auto card bg-gradient-card relative">
       <div className="p-6">
         <div className="flex justify-between items-center mb-2">
           <h3 className="font-medium">Total Balance</h3>
@@ -35,7 +35,7 @@ function BalanceCardComponent({
             </svg>
           </span>
         </div>
-        <div className="text-6xl font-bold mb-2">
+        <div className="text-4xl sm:text-6xl font-bold mb-2">
           ${formattedBalance}
           <span className="text-2xl font-normal opacity-70">.00</span>
         </div>
