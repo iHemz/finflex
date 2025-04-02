@@ -48,7 +48,7 @@ export default function Header() {
                 <NavLinks pathName={router.pathName} onClick={onClickLink} />
               </div>
               <div className="mt-auto pt-6 border-t border-gray-800">
-                <UserMenu />
+                <UserMenu onClick={close} />
               </div>
             </div>
           </DialogPanel>

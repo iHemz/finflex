@@ -23,11 +23,16 @@ const menuItems = [
   },
 ];
 
-export function UserMenu() {
+type Props = {
+  onClick?: () => void;
+};
+
+export function UserMenu({ onClick }: Props) {
   const { user, logout } = useAuthStore();
   const router = useRouterWithLoader();
 
   const handleLogout = () => {
+    onClick?.();
     logout();
     router.push("/login");
   };
