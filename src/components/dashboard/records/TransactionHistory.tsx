@@ -34,9 +34,8 @@ function TransactionHistoryComponent({ transactions = [] }: { transactions?: Tra
         <div className="space-y-4">
           {transactions.slice(0, 3).map((transaction) => (
             <div key={transaction.id} className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 object-cover overflow-hidden">
-                  {/* <span className="text-lg">{transaction.logo}</span> */}
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-gray-800 object-cover overflow-hidden">
                   <img src={transaction.logo} alt="" className="object-cover" />
                 </div>
                 <div>

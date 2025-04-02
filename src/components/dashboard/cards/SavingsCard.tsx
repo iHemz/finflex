@@ -1,15 +1,11 @@
-import { Finance } from "@/requests/financial_data/types";
+import { Savings } from "@/requests/financial_data/types";
 
-interface FinanceCardProps extends Partial<Finance> {
-  title: string;
-}
-
-export function FinanceCard({ amount = 0, change = 0, title }: FinanceCardProps) {
+export function SavingsCard({ amount, rate }: Partial<Savings>) {
   return (
-    <section className="card">
-      <div className="p-4">
+    <section className="card w-full p-4 flex flex-col justify-between">
+      <div>
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-gray-300">{title}</h3>
+          <h3 className="text-gray-300">My Savings</h3>
           <span className="text-gray-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +21,6 @@ export function FinanceCard({ amount = 0, change = 0, title }: FinanceCardProps)
             </svg>
           </span>
         </div>
-        <div className="text-2xl font-semibold text-white">${amount.toFixed(2)}</div>
         <div className="flex items-center bg-green-900/30 text-green-400 rounded-full px-3 py-1 w-fit mt-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +34,10 @@ export function FinanceCard({ amount = 0, change = 0, title }: FinanceCardProps)
               clipRule="evenodd"
             />
           </svg>
-          <span className="text-xs">{change}%</span>
+          <span className="text-xs">{rate}%</span>
         </div>
       </div>
+      <div className="text-2xl font-semibold text-white">${amount?.toFixed(2)}</div>
     </section>
   );
 }

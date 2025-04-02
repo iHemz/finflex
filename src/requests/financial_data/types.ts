@@ -57,13 +57,13 @@ export type BudgetData = Array<BudgetInfo>;
 
 export type Budget = { monthly: BudgetData; totalBudget: number };
 export type SpendingMax = { total: number; categories: Categories };
-type Goal = { current: number; target: number; percentage: number };
+export type Goal = { current: number; target: number; percentage: number };
 
 interface PerformanceData {
   name: Month;
   value: number;
 }
-interface Savings extends Pick<Finance, "amount"> {
+export interface Savings extends Pick<Finance, "amount"> {
   rate: number;
 }
 

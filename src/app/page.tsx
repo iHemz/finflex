@@ -2,6 +2,9 @@
 
 import { BalanceCard } from "@/components/dashboard/cards/BalanceCard";
 import { CreditCard } from "@/components/dashboard/cards/CreditCard";
+import { QuickActions } from "@/components/dashboard/cards/QuickActions";
+import { QuickTransfer } from "@/components/dashboard/cards/QuickTransfer";
+import { GoalAndSavings } from "@/components/dashboard/GoalAndSavings";
 import { IncomeAndExpense } from "@/components/dashboard/IncomeAndExpense";
 import { Budget } from "@/components/dashboard/records/Budget";
 import { TopSpending } from "@/components/dashboard/records/TopSpending";
@@ -23,7 +26,7 @@ export default function HomePage() {
       <CreditCard loading={isLoading} {...data?.credit} />
 
       {/* Chart Row */}
-      <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-6">
+      <section className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Budget Section */}
         <Budget loading={isLoading} {...data?.budget} />
 
@@ -32,7 +35,17 @@ export default function HomePage() {
 
         {/* Transaction History */}
         <TransactionHistory loading={isLoading} transactions={data?.transactions} />
-      </div>
+      </section>
+
+      {/* Utilities */}
+      <section className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Goal and Savings Section */}
+        <GoalAndSavings loading={isLoading} goal={data?.goal} savings={data?.savings} />
+        {/* Quick Transfers */}
+        <QuickTransfer loading={isLoading} transactions={data?.transactions} />
+        {/* Quick Actions */}
+        <QuickActions loading={isLoading} />
+      </section>
     </main>
   );
 }
