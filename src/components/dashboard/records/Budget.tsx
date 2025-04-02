@@ -1,4 +1,5 @@
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { BudgetMenu } from "@/components/dashboard/records/BudgetMenu";
 import { withLoading } from "@/components/hoc/withLoading";
 import { Budget as BudgetProps } from "@/requests/financial_data/types";
 
@@ -8,21 +9,7 @@ function BudgetComponent({ monthly: monthlyBudget = [] }: Partial<BudgetProps>) 
       <div className="p-4">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-medium text-gray-300">Budget</h3>
-          <div className="flex items-center">
-            <span className="text-sm text-gray-400 mr-2">Monthly</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-gray-500"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <BudgetMenu />
         </div>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">

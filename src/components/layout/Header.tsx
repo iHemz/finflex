@@ -3,15 +3,17 @@
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/24/outline";
 import { AlignJustify, X } from "lucide-react";
-import { Avatar } from "@/components/layout/Avatar";
 import { Logo } from "@/components/layout/Logo";
 import { NavLinks } from "@/components/layout/NavLinks";
+import { UserMenu } from "@/components/layout/UserMenu";
 import useDisclosure from "@/hooks/useDisclosure";
 import useRouterWithLoader from "@/hooks/useRouterWithLoader";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function Header() {
   const router = useRouterWithLoader();
   const { isOpen, open, close } = useDisclosure();
+  const user = useAuthStore((state) => state.user);
 
   const onClickLink = (path: string) => {
     router.push(path);
@@ -45,8 +47,8 @@ export default function Header() {
               <div className="flex-1 mt-6">
                 <NavLinks pathName={router.pathName} onClick={onClickLink} />
               </div>
-              <div className="md:hidden mt-auto pt-6">
-                <Avatar />
+              <div className="mt-auto pt-6 border-t border-gray-800">
+                <UserMenu />
               </div>
             </div>
           </DialogPanel>
@@ -56,13 +58,13 @@ export default function Header() {
       <section className="hidden md:flex items-center space-x-4">
         <button
           type="button"
-          className="cursor-pointer rounded-full bg-card-bg p-2 text-gray-400 hover:text-gray-300"
+          className="cursor-pointer rounded-full bg-card-bg p-2 hover:scale-105 hover:ring-1 hover:ring-gradient-start/10 text-gray-400 hover:text-gray-300"
         >
           <span className="sr-only">View notifications</span>
           <BellIcon className="h-6 w-6" aria-hidden="true" />
         </button>
 
-        <Avatar />
+        <UserMenu />
       </section>
     </header>
   );

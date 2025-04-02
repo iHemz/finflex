@@ -49,7 +49,7 @@ export function QuickActionsComponent({
   return (
     <section className="card p-4 col-span-12">
       <h3 className="font-medium text-gray-300 mb-6">Quick Actions</h3>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
         {actions.map((action) => (
           <button
             key={action.name}

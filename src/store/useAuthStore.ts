@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { queryClient } from "@/libs/reactQuery";
 
-interface User {
+export interface User {
   id: string;
   email: string;
   name: string;
@@ -15,30 +15,34 @@ interface AuthState {
   logout: () => void;
 }
 
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      user: null,
-      isAuthenticated: false,
-      login: (user) => set({ user, isAuthenticated: true }),
-      logout: () => set({ user: null, isAuthenticated: false }),
-    }),
-    {
-      name: "auth-storage",
-      storage: createJSONStorage(() => ({
-        getItem: (name) => {
-          const cookie = Cookies.get(name);
-          return cookie ? JSON.parse(cookie) : null;
-        },
-        setItem: (name, value) => {
-          Cookies.set(name, JSON.stringify(value), {
-            expires: 7,
-            path: "/",
-            sameSite: "lax",
-          });
-        },
-        removeItem: (name) => Cookies.remove(name),
-      })),
-    }
-  )
-);
+const STORAGE_KEY = "auth-storage";
+
+export const useAuthStore = create<AuthState>()((set) => ({
+  user: null,
+  isAuthenticated: false,
+  login: (user) => {
+    const state = { user, isAuthenticated: true };
+    Cookies.set(STORAGE_KEY, JSON.stringify(state), {
+      expires: 7,
+      path: "/",
+      sameSite: "lax",
+    });
+    set(state);
+  },
+  logout: () => {
+    Cookies.remove(STORAGE_KEY, { path: "/" });
+    queryClient.clear();
+    set({ user: null, isAuthenticated: false });
+  },
+}));
+
+// Initialize state from cookie
+const storedState = Cookies.get(STORAGE_KEY);
+if (storedState) {
+  try {
+    const state = JSON.parse(storedState);
+    useAuthStore.setState(state);
+  } catch (e) {
+    Cookies.remove(STORAGE_KEY, { path: "/" });
+  }
+}
