@@ -2,7 +2,6 @@
 
 import { BalanceCard } from "@/components/dashboard/cards/BalanceCard";
 import { CreditCard } from "@/components/dashboard/cards/CreditCard";
-import { QuickActions } from "@/components/dashboard/cards/QuickActions";
 import { QuickTransfer } from "@/components/dashboard/cards/QuickTransfer";
 import { GoalAndSavings } from "@/components/dashboard/GoalAndSavings";
 import { IncomeAndExpense } from "@/components/dashboard/IncomeAndExpense";
@@ -43,8 +42,6 @@ export default function HomePage() {
         <GoalAndSavings loading={isLoading} goal={data?.goal} savings={data?.savings} />
         {/* Quick Transfers */}
         <QuickTransfer loading={isLoading} transactions={data?.transactions} />
-        {/* Quick Actions */}
-        <QuickActions loading={isLoading} />
       </section>
     </main>
   );

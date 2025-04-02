@@ -3,7 +3,7 @@ import { Transactions } from "@/requests/financial_data/types";
 
 function QuickTransferComponent({ transactions = [] }: { transactions?: Transactions }) {
   return (
-    <section className="md:col-span-3 card p-4">
+    <section className="md:col-span-4 card p-4">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-medium text-gray-300">Quick Transfer</h3>
         <svg

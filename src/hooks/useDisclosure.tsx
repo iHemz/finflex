@@ -1,13 +1,20 @@
 import { useState } from "react";
 
-function useDisclosure() {
-  const [isTrue, setIsTrue] = useState(false);
+interface DisclosureReturn {
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
+  toggle: () => void;
+}
 
-  const open = () => setIsTrue(true);
-  const close = () => setIsTrue(false);
-  const toggle = () => setIsTrue(!isTrue);
+function useDisclosure(initialState = false): DisclosureReturn {
+  const [isOpen, setIsOpen] = useState(initialState);
 
-  return [isTrue, { open, close, toggle }];
+  const open = () => setIsOpen(true);
+  const close = () => setIsOpen(false);
+  const toggle = () => setIsOpen(!isOpen);
+
+  return { isOpen, open, close, toggle };
 }
 
 export default useDisclosure;

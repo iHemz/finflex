@@ -7,7 +7,7 @@ export function GoalCard({ percentage = 0, current = 0, target = 0 }: Partial<Go
   const targetCost = `$${target / 1000}k`;
 
   return (
-    <section className="card w-full p-4 bg-gradient-to-r from-gradient-start/20 from-50% to-gray-800 to-50% flex flex-col gap-6">
+    <section className="card sm:col-span-5 w-full p-4 bg-gradient-to-r from-gradient-start/20 from-50% to-gray-800 to-50% flex flex-col gap-6">
       <div>
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-gray-300">My Goal</h3>

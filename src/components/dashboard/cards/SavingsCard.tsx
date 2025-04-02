@@ -2,7 +2,7 @@ import { Savings } from "@/requests/financial_data/types";
 
 export function SavingsCard({ amount, rate }: Partial<Savings>) {
   return (
-    <section className="card w-full p-4 flex flex-col justify-between">
+    <section className="card sm:col-span-3 w-full p-4 flex flex-col justify-between">
       <div>
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-gray-300">My Savings</h3>

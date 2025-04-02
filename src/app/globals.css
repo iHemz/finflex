@@ -31,6 +31,7 @@
 @theme {
   --color-card-bg: var(--card-bg);
   --color-gradient-start: var(--gradient-start);
+  --color-background: var(--background);
 }
 
 body {

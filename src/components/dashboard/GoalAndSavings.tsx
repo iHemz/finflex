@@ -10,7 +10,7 @@ type Props = {
 
 function GoalAndSavingsComponent({ goal, savings }: Props) {
   return (
-    <section className="md:col-span-5 flex gap-6">
+    <section className="md:col-span-8 grid grid-cols-1 sm:grid-cols-8 gap-6">
       <GoalCard {...goal} />
       <SavingsCard {...savings} />
     </section>
