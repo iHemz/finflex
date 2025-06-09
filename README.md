@@ -41,12 +41,6 @@ cd finflex
 pnpm install
 ```
 
-3. Create a `.env.local` file in the root directory:
-
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-```
-
 4. Run the development server:
 
 ```bash
